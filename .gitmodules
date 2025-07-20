@@ -1,0 +1,3 @@
+[submodule "Modules/cfEngine"]
+	path = Modules/cfEngine
+	url = https://github.com/felixwongong/cfEngine.git
