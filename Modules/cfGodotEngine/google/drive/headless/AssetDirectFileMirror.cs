@@ -1,8 +1,7 @@
-#if CF_GOOGLE_DRIVE && UNITY_EDITOR
-
 using System.Collections.Generic;
 using cfEngine.Logging;
 using cfEngine.Util;
+using cfGodotEngine.GoogleDrive;
 using Google.Apis.Download;
 using Google.Apis.Drive.v3;
 using GoogleFile = Google.Apis.Drive.v3.Data.File;
@@ -40,7 +39,7 @@ namespace cfUnityEngine.GoogleDrive
                 if (!getFileSetting.TryGetValue(out var optionalSetting) || !optionalSetting.TryGetValue(out var setting))
                     continue;
                 
-                if (!GoogleDriveUtil.MimeFileHandlers.TryGetValue(googleFile.MimeType, out var handler))
+                if (!DriveUtil.MimeFileHandlers.TryGetValue(googleFile.MimeType, out var handler))
                 {
                     logger.LogInfo($"[AssetDirectFileMirror.RefreshFilesAsync] No handler found for mime type: {googleFile.MimeType}");
                     continue;
@@ -87,7 +86,7 @@ namespace cfUnityEngine.GoogleDrive
                 if (!getFileSetting.TryGetValue(out var optionalSetting) || !optionalSetting.TryGetValue(out var setting))
                     continue;
 
-                if (!GoogleDriveUtil.MimeFileHandlers.TryGetValue(googleFile.MimeType, out var handler))
+                if (!DriveUtil.MimeFileHandlers.TryGetValue(googleFile.MimeType, out var handler))
                 {
                     logger.LogInfo($"[AssetDirectFileMirror.RefreshFiles] No handler found for mime type: {googleFile.MimeType}");
                     continue;
@@ -148,5 +147,3 @@ namespace cfUnityEngine.GoogleDrive
         }
     }
 }
-
-#endif

@@ -10,7 +10,7 @@ using Google.Apis.Drive.v3;
 using DirectoryUtil = cfEngine.Util.DirectoryUtil;
 using Path = System.IO.Path;
 
-namespace cfUnityEngine.GoogleDrive
+namespace cfGodotEngine.GoogleDrive
 {
     public struct FolderMimeHandler : FileHandler
     {
@@ -134,7 +134,7 @@ namespace cfUnityEngine.GoogleDrive
                 }
                 
                 DirectoryUtil.CreateDirectoryIfNotExists(assetDirectoryPath, Path.GetDirectoryName(fullPath));
-                if (!GoogleDriveUtil.MimeFileHandlers.TryGetValue(googleFile.MimeType, out var fileHandler))
+                if (!DriveUtil.MimeFileHandlers.TryGetValue(googleFile.MimeType, out var fileHandler))
                 {
                     logger.LogWarning($"[FolderMimeHandler.DownloadWithStatus] No handler for mime type: {googleFile.MimeType}, file: {googleFile.Name} (ID: {googleFile.Id})");
                     continue;
@@ -168,7 +168,7 @@ namespace cfUnityEngine.GoogleDrive
                 var googleFile = folderFile.googleFile;
                 var fullPath = Path.Combine(directory.FullName, folderFile.RelativePathSegment.GetOsPath());
                 DirectoryUtil.CreateDirectoryIfNotExists(assetDirectoryPath, Path.GetDirectoryName(fullPath));
-                if (!GoogleDriveUtil.MimeFileHandlers.TryGetValue(googleFile.MimeType, out var fileHandler))
+                if (!DriveUtil.MimeFileHandlers.TryGetValue(googleFile.MimeType, out var fileHandler))
                 {
                     logger.LogWarning($"[FolderMimeHandler.DownloadAsync] No handler for mime type: {googleFile.MimeType}, file: {googleFile.Name} (ID: {googleFile.Id})");
                     continue;
