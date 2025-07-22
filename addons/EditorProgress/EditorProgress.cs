@@ -37,6 +37,7 @@ public partial class EditorProgress : EditorPlugin
     public void FinishProgress()
     {
         _progressPopup?.ClosePopup();
+        GetTree().Root.RemoveChild(_progressPopup);
         showedProgress = false;
     }
 

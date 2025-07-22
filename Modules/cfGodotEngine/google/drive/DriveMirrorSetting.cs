@@ -4,6 +4,7 @@ using Godot.Collections;
 
 namespace cfGodotEngine.GoogleDrive;
 
+[SettingPath("res://Settings/GoogleDrive/DriveMirrorSetting.tres")]
 [Tool]
 [GlobalClass]
 public partial class DriveMirrorSetting : Setting<DriveMirrorSetting> {
@@ -69,8 +70,8 @@ public partial class DriveMirrorSetting : Setting<DriveMirrorSetting> {
         _settingMap.Clear();
 
         foreach (var item in items) {
-            if (string.IsNullOrEmpty(item.googleDriveLink)) continue;
-            var getUrlInfo = DriveUtil.ParseUrl(item.googleDriveLink);
+            if (string.IsNullOrEmpty(item.driveLink)) continue;
+            var getUrlInfo = DriveUtil.ParseUrl(item.driveLink);
             if (getUrlInfo.TryGetError(out var error)) {
                 DriveUtil.godotLogger.LogException(error);
                 continue;
@@ -80,8 +81,8 @@ public partial class DriveMirrorSetting : Setting<DriveMirrorSetting> {
                 continue;
 
             if (!_settingMap.TryAdd(urlInfo.fileId, item)) {
-                var existing = _settingMap[item.googleDriveLink];
-                DriveUtil.godotLogger.LogError($"Duplicate googleDriveId ({item.googleDriveLink}) found for ({existing.assetFolderPath}) and ({item.assetFolderPath}), ");
+                var existing = _settingMap[item.driveLink];
+                DriveUtil.godotLogger.LogError($"Duplicate googleDriveId ({item.driveLink}) found for ({existing.assetPath}) and ({item.assetPath}), ");
             }
         }
     }

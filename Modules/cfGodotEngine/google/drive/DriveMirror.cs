@@ -23,6 +23,7 @@ public partial class DriveMirror {
             {
                 EditorUtility.ShowProgress(status.progress, $"Refreshing Drive Mirror: {status.file.Name}");
             }
+            EditorUtility.HideProgress();
         }
         catch (Exception e) {
             DriveUtil.godotLogger.LogException(e);

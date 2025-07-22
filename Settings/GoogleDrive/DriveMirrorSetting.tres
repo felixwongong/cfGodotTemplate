@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DriveMirrorSetting" load_steps=2 format=3 uid="uid://dw6hqrtp1husy"]
+
+[ext_resource type="Script" uid="uid://cvcodfsmib7ye" path="res://Modules/cfGodotEngine/google/drive/DriveMirrorSetting.cs" id="1_26hes"]
+
+[resource]
+script = ExtResource("1_26hes")
+_serviceAccountCredentialJsonPath = ""
+changeChecksumToken = ""
+items = []
+refreshOnEnterPlayMode = false
+metadata/_custom_type_script = "uid://cvcodfsmib7ye"

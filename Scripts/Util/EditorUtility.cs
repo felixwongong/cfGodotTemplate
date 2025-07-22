@@ -8,4 +8,9 @@ public static class EditorUtility
     {
         EditorProgress.Instance.UpdateProgress(percent, message);
     } 
+    
+    public static void HideProgress()
+    {
+        EditorProgress.Instance.FinishProgress();
+    }
 }

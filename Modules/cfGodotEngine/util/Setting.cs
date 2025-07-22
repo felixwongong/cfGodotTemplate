@@ -1,12 +1,25 @@
-﻿using Godot;
+﻿using System;
+using System.Reflection;
+using Godot;
 
 namespace cfGodotEngine.Util;
+
+public class SettingPath(string path) : Attribute 
+{
+    public string path = path;
+}
 
 public abstract partial class Setting<T>: Resource where T : Setting<T>
 {
     public static T GetSetting() 
     {
-        var path = $"res://Settings/{typeof(T).Name}.tres";
+        if (typeof(T).GetCustomAttribute(typeof(SettingPath), true) is not SettingPath pathAttribute) 
+        {
+            GD.PushError($"Setting {typeof(T).Name} does not have a SettingPath attribute.");
+            return null;
+        }
+
+        var path = pathAttribute.path;
         var setting = ResourceLoader.Load<T>(path);
         if (setting == null)
         {

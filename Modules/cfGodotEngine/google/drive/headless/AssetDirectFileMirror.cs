@@ -45,7 +45,7 @@ namespace cfUnityEngine.GoogleDrive
                     continue;
                 }   
                 
-                var directory = DirectoryUtil.CreateDirectoryIfNotExists(assetDirectoryPath, setting.assetFolderPath);
+                var directory = DirectoryUtil.CreateDirectoryIfNotExists(assetDirectoryPath, setting.assetPath);
                 var localFileName = GetLocalFileName(googleFile, setting);
                 
                 var result = await handler.DownloadAsync(
@@ -92,7 +92,7 @@ namespace cfUnityEngine.GoogleDrive
                     continue;
                 }
 
-                var directory = DirectoryUtil.CreateDirectoryIfNotExists(assetDirectoryPath, setting.assetFolderPath);
+                var directory = DirectoryUtil.CreateDirectoryIfNotExists(assetDirectoryPath, setting.assetPath);
                 var localFileName = GetLocalFileName(googleFile, setting);
                 
                 var result = handler.DownloadWithStatus(
@@ -115,13 +115,18 @@ namespace cfUnityEngine.GoogleDrive
         {
             if (progress is { Status: DownloadStatus.Completed })
             {
-                setting.googleFileName = googleFile.Name;
+                DriveUtil.godotLogger.LogInfo($"[AssetDirectFileMirror.RefreshFiles] Download completed, google file: {googleFile.Name}");
+                if (!setting.fileName.Equals(googleFile.Name)) 
+                {
+                    setting.fileName = googleFile.Name;
+                    DriveUtil.godotLogger.LogInfo($"[AssetDirectFileMirror.RefreshFiles] Updated setting fileName to {googleFile.Name}");
+                }
             }
         }
 
         private string GetLocalFileName(GoogleFile googleFile, SettingItem setting)
         {
-            var localAssetName = setting.assetNameOverride;
+            var localAssetName = setting.fileName;
             if (string.IsNullOrWhiteSpace(localAssetName))
             {
                 localAssetName = $"{googleFile.Name}";

@@ -76,10 +76,6 @@ public partial class DriveMirror {
     public IAsyncEnumerable<RefreshStatus> ClearAllAndRefreshAsync() {
         var setting = DriveMirrorSetting.GetSetting();
         setting.changeChecksumToken = string.Empty;
-        foreach (var item in setting.settingMap.Values) {
-            item.googleFileName = string.Empty;
-        }
-
         return RefreshAsync();
     }
 
