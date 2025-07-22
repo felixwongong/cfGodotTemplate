@@ -41,7 +41,7 @@ public partial class DriveMirrorSetting : Setting<DriveMirrorSetting> {
     
     [ExportToolButton("Refresh")]
     public Callable RefreshButton => Callable.From(Refresh);
-    private void Refresh() {
+    public void Refresh() {
         DriveUtil.godotLogger.LogInfo("[GDriveMirrorSetting.Refresh] refresh started");
         DriveMirror.instance.RefreshWithProgressBar().ContinueWith(task => {
             if (task.IsFaulted) {
@@ -55,7 +55,7 @@ public partial class DriveMirrorSetting : Setting<DriveMirrorSetting> {
     
     [ExportToolButton("Force Refresh All")]
     public Callable ForceRefreshAllButton => Callable.From(ForceRefreshAll);
-    private void ForceRefreshAll() {
+    public void ForceRefreshAll() {
         DriveUtil.godotLogger.LogInfo("[GDriveMirrorSetting.ClearAllAndRefresh] clear all and refresh started");
         DriveMirror.instance.ClearAllAndRefreshWithProgressBar().ContinueWith(task => {
             if (task.IsFaulted) {

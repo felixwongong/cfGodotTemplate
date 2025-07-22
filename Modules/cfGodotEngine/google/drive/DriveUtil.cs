@@ -35,7 +35,7 @@ public static class DriveUtil
     public static IReadOnlyDictionary<string, FileHandler> MimeFileHandlers = new Dictionary<string, FileHandler>()
     {
         { "application/vnd.google-apps.spreadsheet", new SheetFileHandler() },
-        { "application/vnd.google-apps.folder", new FolderMimeHandler(godotLogger, Application.dataPath) },
+        { "application/vnd.google-apps.folder", new FolderMimeHandler(godotLogger, Application.assetDataPath) },
     };
 
 

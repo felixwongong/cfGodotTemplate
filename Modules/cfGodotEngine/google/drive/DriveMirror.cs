@@ -16,7 +16,7 @@ public partial class DriveMirror {
 
     static DriveMirror() {
         ILogger logger = new GodotLogger();
-        instance = new DriveMirror(new AssetDirectFileMirror(logger, Application.dataPath), logger);
+        instance = new DriveMirror(new AssetDirectFileMirror(logger, Application.assetDataPath), logger);
     }
 
     public async Task RefreshWithProgressBar() {
