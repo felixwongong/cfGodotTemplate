@@ -1,3 +1,5 @@
+#if CF_GOOGLE_DRIVE
+
 using Godot;
 using Godot.Collections;
 
@@ -10,3 +12,5 @@ public partial class SettingItem: Resource {
     [Export] public string assetPath;
     [Export] public string driveLink;
 }
+
+#endif

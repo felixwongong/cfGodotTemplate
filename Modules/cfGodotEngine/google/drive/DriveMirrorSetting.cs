@@ -1,4 +1,6 @@
-﻿using cfGodotEngine.Util;
+﻿#if CF_GOOGLE_DRIVE
+
+using cfGodotEngine.Util;
 using Godot;
 using Godot.Collections;
 
@@ -46,7 +48,7 @@ public partial class DriveMirrorSetting : Setting<DriveMirrorSetting> {
                 DriveUtil.godotLogger.LogError($"[GDriveMirrorSetting.Refresh] refresh failed: {task.Exception}");
             }
             else {
-                DriveUtil.godotLogger.LogInfo("[GDriveMirrorSetting.Refresh] refresh succeed");
+                DriveUtil.godotLogger.LogInfo("[GDriveMirrorSetting.Refresh] refresh ended");
             }
         });
     }
@@ -60,7 +62,7 @@ public partial class DriveMirrorSetting : Setting<DriveMirrorSetting> {
                 DriveUtil.godotLogger.LogError($"[GDriveMirrorSetting.ClearAllAndRefresh] clear all and refresh failed: {task.Exception}");
             }
             else {
-                DriveUtil.godotLogger.LogInfo("[GDriveMirrorSetting.ClearAllAndRefresh] clear all and refresh succeed");
+                DriveUtil.godotLogger.LogInfo("[GDriveMirrorSetting.ClearAllAndRefresh] clear all and refresh ended");
             }
         });
     }
@@ -87,3 +89,5 @@ public partial class DriveMirrorSetting : Setting<DriveMirrorSetting> {
         }
     }
 }
+
+#endif

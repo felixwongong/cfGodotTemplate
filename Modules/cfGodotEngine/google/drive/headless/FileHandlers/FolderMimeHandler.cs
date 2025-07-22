@@ -1,3 +1,5 @@
+#if CF_GOOGLE_DRIVE
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -196,3 +198,5 @@ namespace cfGodotEngine.GoogleDrive
         }
     }
 }
+
+#endif

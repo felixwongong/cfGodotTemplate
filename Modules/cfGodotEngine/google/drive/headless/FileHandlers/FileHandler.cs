@@ -1,3 +1,5 @@
+#if CF_GOOGLE_DRIVE
+
 using System.IO;
 using System.Threading.Tasks;
 using cfEngine.Util;
@@ -27,3 +29,5 @@ namespace cfGodotEngine.GoogleDrive
         public Task<IDownloadProgress> DownloadAsync(FilesResource filesResource, DownloadRequest downloadRequest);
     }
 }
+
+#endif

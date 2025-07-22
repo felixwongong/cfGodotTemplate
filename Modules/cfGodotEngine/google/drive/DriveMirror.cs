@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if CF_GOOGLE_DRIVE
+
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using cfEngine.Logging;
@@ -40,3 +42,5 @@ public partial class DriveMirror {
         }
     }
 }
+
+#endif

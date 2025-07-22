@@ -1,3 +1,5 @@
+#if CF_GOOGLE_DRIVE
+
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -153,3 +155,5 @@ public partial class DriveMirror {
         return Res.Ok(Optional.Some(setting));
     }
 }
+
+#endif

@@ -1,3 +1,5 @@
+#if CF_GOOGLE_DRIVE
+
 using System;
 using System.Collections.Generic;
 using cfEngine;
@@ -84,3 +86,5 @@ public static class DriveUtil
         return Res.Err<UrlInfo>(new ArgumentOutOfRangeException(nameof(segments), $"Unsupported segment: {string.Join('/', segments)}. "));
     }
 }
+
+#endif

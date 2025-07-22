@@ -1,3 +1,5 @@
+#if CF_GOOGLE_DRIVE
+
 using System.Collections.Generic;
 using cfEngine.Logging;
 using cfEngine.Util;
@@ -152,3 +154,5 @@ namespace cfUnityEngine.GoogleDrive
         }
     }
 }
+
+#endif

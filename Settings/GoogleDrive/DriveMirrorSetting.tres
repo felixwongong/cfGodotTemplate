@@ -6,6 +6,6 @@
 script = ExtResource("1_26hes")
 _serviceAccountCredentialJsonPath = ""
 changeChecksumToken = ""
-items = []
+items = null
 refreshOnEnterPlayMode = false
 metadata/_custom_type_script = "uid://cvcodfsmib7ye"

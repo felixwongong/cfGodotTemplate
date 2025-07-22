@@ -1,3 +1,5 @@
+#if CF_GOOGLE_DRIVE
+
 using System.IO;
 using System.Threading.Tasks;
 using cfEngine.Serialize;
@@ -40,3 +42,5 @@ namespace cfGodotEngine.GoogleDrive
         }
     }
 }
+
+#endif
