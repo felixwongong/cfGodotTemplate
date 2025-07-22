@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using cfEngine.Logging;
 using cfGodotEngine.Core;
 using cfGodotEngine.Util;
+using cfGodotTemplate.Util;
 using cfUnityEngine.GoogleDrive;
 
 namespace cfGodotEngine.GoogleDrive;
@@ -18,7 +19,9 @@ public partial class DriveMirror {
 
     public async Task RefreshWithProgressBar() {
         try {
-            await foreach (var status in RefreshAsync()) {
+            await foreach (var status in RefreshAsync())
+            {
+                EditorUtility.ShowProgress(status.progress, $"Refreshing Drive Mirror: {status.file.Name}");
             }
         }
         catch (Exception e) {

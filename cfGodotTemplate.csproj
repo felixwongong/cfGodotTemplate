@@ -10,9 +10,6 @@
     <PackageReference Include="NUnit" Version="4.3.2" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modules\cfGodotEngine\util" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Modules\cfGodotEngine\google\drive\headless\AssetDirectFileMirror.cs.meta" />
     <Content Include="Modules\cfGodotEngine\google\drive\headless\ChangeHandler.cs.meta" />
     <Content Include="Modules\cfGodotEngine\google\drive\headless\FileHandlers.meta" />
