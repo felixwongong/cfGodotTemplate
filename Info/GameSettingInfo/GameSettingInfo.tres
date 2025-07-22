@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GameSettingResourceInfo" load_steps=2 format=3 uid="uid://jvg85vbae1wg"]
+
+[ext_resource type="Script" uid="uid://0j656666usvn" path="res://Scripts/Info/GameSettingInfo/GameSettingResourceInfo.cs" id="1_uh58i"]
+
+[resource]
+script = ExtResource("1_uh58i")
+metadata/_custom_type_script = "uid://0j656666usvn"
