@@ -45,7 +45,10 @@ public partial class GameEntry: Node
                 new AuthService.Builder()
                     .SetService(new LocalAuthService())
                     .RegisterPlatform(new LocalPlatform())
-                    .Build());
+                    .Build())
+            .WithGameStateMachine(new GameStateMachine());
+
+        game.GetGameStateMachine().TryGoToState(GameStateId.LocalLoad);
         
         Game.SetCurrent(game);
     }
