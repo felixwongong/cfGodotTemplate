@@ -19,3 +19,5 @@ mono_crash.*.json
 .DS_Store
 
 _Export/
+
+Documentation/cfGodotTemplate/_site/
