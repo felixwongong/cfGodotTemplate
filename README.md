@@ -24,8 +24,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/felixwongong/cfgodottemplate.git
-cd cfgodottemplate
+git clone https://github.com/felixwongong/cfGodotTemplate.git
+cd cfGodotTemplate
 ```
 
 ### 2. Open in Godot
