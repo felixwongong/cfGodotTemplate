@@ -59,9 +59,9 @@ This project is structured as a **game**, using C# as the scripting language and
 * Press <kbd>F5</kbd> or click the **Play** icon in the Godot Editor.
 * For code editing, use:
 
-    * [Visual Studio 2022+](https://visualstudio.microsoft.com/)
-    * [JetBrains Rider](https://www.jetbrains.com/rider/)
-    * Any .NET-compatible IDE
+	* [Visual Studio 2022+](https://visualstudio.microsoft.com/)
+	* [JetBrains Rider](https://www.jetbrains.com/rider/)
+	* Any .NET-compatible IDE
 
 ---
 
@@ -73,9 +73,9 @@ To export builds:
 2. Set up export presets via `Project > Export`
 3. Target any platform:
 
-    * Windows / macOS / Linux
-    * Android / iOS
-    * Web (HTML5)
+	* Windows / macOS / Linux
+	* Android / iOS
+	* Web (HTML5)
 
 ---
 
@@ -87,6 +87,6 @@ To export builds:
 
 ## 📚 Documentation
 
-➡️ [Getting Started Guide](Documentation/cfGodotTemplate/docs/getting-started.md)
+➡️ [Getting Started Guide](Documentation/docs/getting-started.md)
 
 > Built with ❤️ using Godot 4.4.1 (Mono) and .NET 8
