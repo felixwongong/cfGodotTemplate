@@ -2,7 +2,10 @@ using cfEngine.Core;
 using cfEngine.Info;
 using cfEngine.IO;
 using cfEngine.Logging;
+using cfEngine.Pooling;
 using cfEngine.Serialize;
+using cfEngine.Service.Auth;
+using cfGodotEngine.Asset;
 using cfGodotEngine.Core;
 using cfGodotEngine.Info;
 using cfGodotEngine.Util;
@@ -34,7 +37,17 @@ public partial class GameEntry: Node
         InfoBuildByte();
 
         var game = new Game()
-            .WithAsset(new cfGodotEngine.Asset.ResourceAssetManager());
+            .WithAsset(new ResourceAssetManager())
+            .WithInfo(new InfoLayer())
+            .WithPoolManager(new PoolManager())
+            .WithUserData(new UserDataManager(new LocalFileStorage(Application.persistentDataPath), JsonSerializer.Instance))
+            .WithAuthService(
+                new AuthService.Builder()
+                    .SetService(new LocalAuthService())
+                    .RegisterPlatform(new LocalPlatform())
+                    .Build());
+        
+        Game.SetCurrent(game);
     }
 
     private static void RegisterJsonConverters()
