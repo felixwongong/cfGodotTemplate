@@ -9,7 +9,7 @@ public static class InfoUtil
 {
     public static IStorage CreateStorage(Type infoType) 
     {
-        var storagePath = Application.exportDataPath + infoType.Name;
+        var storagePath = $"{Application.exportDataPath}/Info/{infoType.Name}";
         
         if (!Directory.Exists(storagePath))
         {
