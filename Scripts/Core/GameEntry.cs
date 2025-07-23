@@ -3,9 +3,7 @@ using cfEngine.Info;
 using cfEngine.IO;
 using cfEngine.Logging;
 using cfEngine.Serialize;
-using cfGodotEngine.Asset;
 using cfGodotEngine.Core;
-using cfGodotEngine.GoogleDrive;
 using cfGodotEngine.Info;
 using cfGodotEngine.Util;
 using cfGodotTemplate.Info;
@@ -28,7 +26,7 @@ public partial class GameEntry: Node
         Log.LogInfo($"GameEntry initialized. Log level set to: {_logLevel}.");
 
 #if CF_GOOGLE_DRIVE
-        var mirrorSetting = DriveMirrorSetting.GetSetting();
+        var mirrorSetting = cfGodotEngine.GoogleDrive.DriveMirrorSetting.GetSetting();
         if (mirrorSetting.refreshOnEnterPlayMode) 
             mirrorSetting.Refresh();
 #endif
@@ -36,7 +34,7 @@ public partial class GameEntry: Node
         InfoBuildByte();
 
         var game = new Game()
-            .WithAsset(new ResourceAssetManager());
+            .WithAsset(new cfGodotEngine.Asset.ResourceAssetManager());
     }
 
     private static void RegisterJsonConverters()
