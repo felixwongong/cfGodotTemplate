@@ -3,6 +3,7 @@ using cfEngine.Info;
 using cfEngine.IO;
 using cfEngine.Logging;
 using cfEngine.Pooling;
+using cfEngine.Rx;
 using cfEngine.Serialize;
 using cfEngine.Service.Auth;
 using cfGodotEngine.Asset;
@@ -19,6 +20,8 @@ namespace cfGodotTemplate.Core;
 public partial class GameEntry: Node
 {
     [Export] private LogLevel _logLevel = LogLevel.Debug;
+    
+    Subscription _afterStateChangeSub;
     
     private GameEntry()
     {
@@ -40,17 +43,25 @@ public partial class GameEntry: Node
             .WithAsset(new ResourceAssetManager())
             .WithInfo(new InfoLayer())
             .WithPoolManager(new PoolManager())
-            .WithUserData(new UserDataManager(new LocalFileStorage(Application.persistentDataPath), JsonSerializer.Instance))
+            .WithUserData(new UserDataManager(new LocalFileStorage(Application.persistentDataPath),
+                JsonSerializer.Instance))
             .WithAuthService(
                 new AuthService.Builder()
                     .SetService(new LocalAuthService())
                     .RegisterPlatform(new LocalPlatform())
-                    .Build())
-            .WithGameStateMachine(new GameStateMachine());
+                    .Build());
 
-        game.GetGameStateMachine().TryGoToState(GameStateId.LocalLoad);
+        var gsm = new GameStateMachine();
+        game.WithGameStateMachine(gsm);
+        
+        _afterStateChangeSub = gsm.SubscribeAfterStateChange(change =>
+        {
+            Log.LogInfo($"GameStateMachine changed state from {change.LastState} to {change.NewState}.");
+        });
         
         Game.SetCurrent(game);
+        
+        gsm.TryGoToState(GameStateId.LocalLoad);
     }
 
     private static void RegisterJsonConverters()

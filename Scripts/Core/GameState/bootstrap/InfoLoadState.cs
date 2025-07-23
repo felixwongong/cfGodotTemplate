@@ -44,12 +44,7 @@ namespace cfGodotTemplate.Core
         
         private IValueLoader<TInfo> CreateLoader<TInfo>()
         {
-            return new SerializationLoader<TInfo>(CreateStorage<TInfo>(), JsonSerializer.Instance);
-        }
-
-        private IStorage CreateStorage<TInfo>()
-        {
-            return InfoUtil.CreateStorage(typeof(TInfo));
+            return new SerializationLoader<TInfo>(InfoUtil.CreateStorage(typeof(TInfo)), JsonSerializer.Instance);
         }
     }
 }
