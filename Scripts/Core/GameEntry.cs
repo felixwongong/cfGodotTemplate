@@ -35,8 +35,8 @@ public partial class GameEntry: Node
         
         InfoBuildByte();
 
-        var game = new Game();
-        var monitor = ResourceLoadMonitor.Instance;
+        var game = new Game()
+            .WithAsset(new ResourceAssetManager());
     }
 
     private static void RegisterJsonConverters()

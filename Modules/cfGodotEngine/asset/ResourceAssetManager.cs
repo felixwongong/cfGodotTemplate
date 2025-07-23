@@ -18,6 +18,7 @@ public class ResourceAssetManager: AssetManager<Resource>
 
     protected override Task<AssetHandle<T>> _LoadAsync<T>(string path, CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        var resourceTask = AsyncResourceLoader.LoadAsync(path, null);
+        return resourceTask.ContinueWith(t => new AssetHandle<T>((T)t.Result, ReleaseAction), token);
     }
 }

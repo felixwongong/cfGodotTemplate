@@ -4,9 +4,14 @@ using Godot;
 
 namespace cfGodotEngine.Util;
 
-public class SettingPath(string path) : Attribute 
+public class SettingPath : Attribute
 {
-    public string path = path;
+    public readonly string path;
+
+    public SettingPath(string path)
+    {
+        this.path = path;
+    }
 }
 
 public abstract partial class Setting<T>: Resource where T : Setting<T>
