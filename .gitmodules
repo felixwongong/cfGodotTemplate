@@ -1,3 +1,6 @@
 [submodule "Modules/cfEngine"]
 	path = Modules/cfEngine
 	url = https://github.com/felixwongong/cfEngine.git
+[submodule "Modules/cfGodotEngine"]
+	path = Modules/cfGodotEngine
+	url = https://github.com/felixwongong/cfGodotEngine.git
